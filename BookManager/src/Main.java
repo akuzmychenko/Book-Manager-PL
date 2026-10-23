@@ -57,10 +57,19 @@ public class Main {
             MenuManagement.displayMenu();
             String option = scanner.nextLine();
             switch (option) {
-                case "1":
+                case "1": {
+                    // Zapamiętaj liczbę książek przed próbą dodania.
+                    int countBefore = books.size();
+
                     MenuManagement.addBook(books, scanner);
-                    addCount++;
+
+                    // Zwiększ licznik tylko po pomyślnym dodaniu książki.
+                    if (books.size() > countBefore) {
+                        addCount++;
+                    }
+
                     break;
+                }
 
                 case "2":
                     MenuManagement.printBooks(books);
